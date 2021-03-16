@@ -13,20 +13,31 @@ public class myApp {
         {
         int min=1;
         int max=13;
-        int i;
+        int i, bet = 0;
         int userTotal=0, compTotal=0;
         int userCard[]=new int[8];
         int compCard[]=new int[8];
+        boolean betting = true;
         
-        System.out.println("You have " + chips + " chips");
-        System.out.println("Enter an amount to bet: ");
-        int bet = scanner.nextInt();
+        while (betting) {
+            System.out.println("You have " + chips + " chips");
+            System.out.println("Enter an amount to bet: ");
+            bet = scanner.nextInt();
+            if ((bet > 0) && (bet <= chips)) {
+                betting = false;
+            }
+            else {
+                System.out.println("PLEASE ENTER A VALID BET");
+            }
+        }
         
         for (i=0; i<2; i++) {
             userCard[i] = (int)(Math.random() * (max - min + 1) + min);
             if (userCard[i] > 10) {userCard[i] = 10;}
+            if (userCard[i] == 1) {userCard[i] = 11;}
             compCard[i] = (int)(Math.random() * (max - min + 1) + min);
             if (compCard[i] > 10) {compCard[i] = 10;}
+            if (userCard[i] == 1) {userCard[i] = 11;}
         }
         userTotal = userCard[0]+userCard[1];
         compTotal = compCard[0]+compCard[1];
@@ -63,7 +74,7 @@ public class myApp {
                     }
                     if (compTotal > 21) {
                         System.out.println("YOU WIN: host bust  (" + compTotal + ")");
-                        chips += bet*2;
+                        chips += bet;
                     }
                     else if (compTotal>userTotal) {
                         System.out.println("YOU LOSE: host wins with " + compTotal);
@@ -72,7 +83,6 @@ public class myApp {
                     else if (compTotal==userTotal) {
                         System.out.println("TIE: you have " + userTotal + " and host has " + compTotal);
                         System.out.println("Your bet is returned to you");
-                        break;
                     }
                     game=false;
                     break;
@@ -91,9 +101,6 @@ public class myApp {
         }
             
         }
-        
-        
-        
         
     }
 }
