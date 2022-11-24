@@ -10,4 +10,4 @@ This is currently text based Blackjack, here is what a short game looks like
 As you can see from the game when the player one the hand thier bet was doubled. They bet 150 and won 150 more.
 After this win they decide to bet more and end up losing the heand to the house.
 
-I do plan to make a version with graphics soon :)
+I do plan on making a version with graphics soon :)
